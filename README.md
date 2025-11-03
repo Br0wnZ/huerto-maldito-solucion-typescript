@@ -131,6 +131,7 @@ Depende de abstracciones (la interfaz), no de implementaciones concretas.
 .
 ├── maximaGanancia.ts          # Implementación principal
 ├── maximaGanancia.test.ts     # Suite de tests exhaustiva
+├── maximaGanancia.bench.ts    # Sistema de benchmarking
 ├── tsconfig.json              # Configuración de TypeScript
 ├── package.json               # Dependencias del proyecto
 └── README.md                  # Este archivo
@@ -210,6 +211,73 @@ npm test
 |--------|---------|---------|-------------|
 | **ts-node** | `npm run test:ts` | ⚡ Más rápido, sin compilar | Desarrollo, pruebas rápidas |
 | **tsc + node** | `npm test` | 📦 Genera archivos .js | Producción, distribución |
+
+---
+
+## Benchmarking
+
+El proyecto incluye un sistema de benchmarking que mide el rendimiento de la función `maximaGanancia` con diferentes tamaños de arrays.
+
+### Ejecutar Benchmarks
+
+```bash
+# Ejecutar benchmarks directamente con ts-node
+npm run bench:ts
+
+# O compilar y ejecutar
+npm run bench
+```
+
+### Casos de Prueba
+
+El benchmark incluye:
+
+1. **Arrays de diferentes tamaños**:
+   - Pequeño (10 elementos)
+   - Mediano (100 elementos)
+   - Grande (1,000 elementos)
+   - Muy grande (10,000 elementos)
+   - Extremo (100,000 elementos)
+
+2. **Casos específicos del enunciado**:
+   - Huerto maldito original
+   - Todos positivos
+   - Todos negativos
+   - Con zona maldita
+
+3. **Casos extremos**:
+   - Best case: Todos positivos
+   - Worst case: Todos negativos
+   - Patrón alternado
+
+### Ejemplo de Salida
+
+```
+🎯 BENCHMARKS - Algoritmo de Kadane (Máxima Ganancia)
+============================================================
+
+📊 Array pequeño (10 elementos)
+   Tamaño del array: 10
+   Iteraciones: 10,000
+   Tiempo total: 45.23 ms
+   Tiempo promedio: 0.0045 ms
+   Operaciones/seg: 221,000
+   Resultado: 85
+
+📊 Array grande (1,000 elementos)
+   Tamaño del array: 1,000
+   Iteraciones: 10,000
+   Tiempo total: 523.45 ms
+   Tiempo promedio: 0.0523 ms
+   Operaciones/seg: 19,100
+   Resultado: 8542
+```
+
+### Complejidad Demostrada
+
+Los benchmarks demuestran empíricamente que el algoritmo mantiene:
+- **O(n)** complejidad temporal: El tiempo crece linealmente con el tamaño del array
+- **O(1)** complejidad espacial: No hay uso adicional de memoria proporcional al input
 
 ---
 

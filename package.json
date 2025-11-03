@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc",
     "test": "tsc && node dist/maximaGanancia.test.js",
-    "test:ts": "ts-node maximaGanancia.test.ts"
+    "test:ts": "ts-node maximaGanancia.test.ts",
+    "bench": "tsc && node dist/maximaGanancia.bench.js",
+    "bench:ts": "ts-node maximaGanancia.bench.ts"
   },
   "author": "Javier Moreno",
   "license": "ISC",
